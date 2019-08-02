@@ -1,6 +1,6 @@
 #include "console.h"
 
-int kern_entry() {
+int kern_entry(multiboot_t *mboot_ptr) {
     
     console_clear();
 
