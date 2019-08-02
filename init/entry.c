@@ -1,9 +1,11 @@
-#include "types.h"
+#include "console.h"
 
 int kern_entry() {
     
     uint8_t *input = (uint8_t *)0xB8000;
     uint8_t color = (0 << 4) | (15 & 0x0F);
+
+    console_clear();
 
     *input++ = 'H'; *input++ = color;
     *input++ = 'e'; *input++ = color;
@@ -22,6 +24,8 @@ int kern_entry() {
     *input++ = 'e'; *input++ = color;
     *input++ = 'l'; *input++ = color;
     *input++ = '!'; *input++ = color;
+
+    console_write_color("\n\nThis is My OS, It Name is Sniex-OS!\n", rc_black, rc_green);
     
     return 0;
 }
