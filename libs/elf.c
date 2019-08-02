@@ -3,7 +3,7 @@
 #include "elf.h"
 
 // 从 multiboot 结构获取 ELF 信息
-elf_t elf_from_mulyiboot(multiboot_t *mb) {
+elf_t elf_from_multiboot(multiboot_t *mb) {
     int i;
     elf_t elf;
     elf_section_header_t *sh = (elf_section_header_t *)mb->addr;
