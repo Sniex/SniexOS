@@ -1,10 +1,15 @@
 #include "console.h"
+#include "debug.h"
 
 int kern_entry() {
     
+    init_debug();
+
     console_clear();
 
-    console_write_color("\n\nThis is My OS, It Name is Sniex-OS!\n", rc_black, rc_green);
+    printk_color(rc_light_grey, rc_red, "\t\tThis is My OS, It Name is Sniex-OS!\n");
     
+    panic("test");
+
     return 0;
 }
