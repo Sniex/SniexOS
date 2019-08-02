@@ -5,12 +5,12 @@ C_OBJECTS = $(patsubst %.c, %.o, $(C_SOURCES))
 S_SOURCES = $(shell find . -name "*.s")
 S_OBJECTS = $(patsubst %.s, %.o, $(S_SOURCES))
 
-CC = gcc
+CC = gcc-4.8
 LD = ld
 ASM = nasm
 
-C_FLAGS = -c -Wall -m32 -ggdb -g -nostdinc -fno-builtin -fno-stack-protector -I include
-LD_FLAGS = -Z -order_file scripts/kernel.ld -arch i386 -Z
+C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protector -I include
+LD_FLAGS = -T scripts/kernel.ld -m elf_i386 -nostdlib
 ASM_FLAGS = -f elf -g -F stabs
 
 all: $(S_OBJECTS) $(C_OBJECTS) link update_image
